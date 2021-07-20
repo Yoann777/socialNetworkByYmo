@@ -8,7 +8,7 @@ module.exports.getAllUsers = async (req, res) => {
 
 module.exports.userInfo = (req, res) => {
     if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send('ID unknown : ' + req.params.id)
+        return res.status(400).send('ID unknown : ' + req.params.id);
 
     UserModel.findById(req.params.id, (err, docs) => {
         if (!err) res.send(docs);
@@ -18,7 +18,7 @@ module.exports.userInfo = (req, res) => {
 
 module.exports.updateUser = async (req, res) => {
     if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send('ID unknown : ' + req.params.id)
+        return res.status(400).send('ID unknown : ' + req.params.id);
 
     try {
         await UserModel.findOneAndUpdate(
@@ -42,7 +42,7 @@ module.exports.updateUser = async (req, res) => {
 
 module.exports.deleteUser = async (req, res) => {
     if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send('ID unknown : ' + req.params.id)
+        return res.status(400).send('ID unknown : ' + req.params.id);
 
     try {
         await UserModel.remove({ _id: req.params.id }).exec();
@@ -55,7 +55,7 @@ module.exports.deleteUser = async (req, res) => {
 
 module.exports.follow = async (req, res) => {
     if (!ObjectId.isValid(req.params.id) || !ObjectId.isValid(req.body.idToFollow))
-        return res.status(400).send('ID unknown : ' + req.params.id)
+        return res.status(400).send('ID unknown : ' + req.params.id);
 
     try {
         // add to the follower list
@@ -85,7 +85,7 @@ module.exports.follow = async (req, res) => {
 
 module.exports.unfollow = async (req, res) => {
     if (!ObjectId.isValid(req.params.id) || !ObjectId.isValid(req.body.idToUnfollow))
-        return res.status(400).send('ID unknown : ' + req.params.id)
+        return res.status(400).send('ID unknown : ' + req.params.id);
 
     try {
         // add to the follower list
